@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            overflow: visible;
+        }
+
+        .body {
+            height: auto;
+        }
+
+        .image-container {
+            text-align: center;
+        }
+
+        .image-container img {
+            display: inline;
+            vertical-align: middle;
+            padding: 20px;
+            padding-bottom: 50px;
+        }
+    </style>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const fileInput = document.getElementById("fileInput");
+  const gallery = document.getElementById("gallery");
+
+  fileInput.addEventListener("change", function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const imageUrl = e.target.result;
+        addImageToGallery(imageUrl);
+        saveImageLocally(imageUrl);
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  // Load images from local storage when the page loads
+  window.addEventListener("load", function() {
+    const images = JSON.parse(localStorage.getItem("images")) || [];
+    images.forEach(function(imageUrl) {
+      addImageToGallery(imageUrl);
+    });
+  });
+
+  function addImageToGallery(imageUrl) {
+    const container = document.createElement("div");
+    container.classList.add("image-container");
+
+    const img = document.createElement("img");
+    img.src = imageUrl;
+    img.style.maxWidth = "150px"; // Set maximum width for the image
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", function() {
+      deleteImage(imageUrl);
+      container.remove();
+    });
+
+    container.appendChild(img);
+    container.appendChild(deleteButton);
+    gallery.appendChild(container);
+  }
+
+  function saveImageLocally(imageUrl) {
+    const images = JSON.parse(localStorage.getItem("images")) || [];
+    images.push(imageUrl);
+    localStorage.setItem("images", JSON.stringify(images));
+  }
+
+  function deleteImage(imageUrl) {
+    let images = JSON.parse(localStorage.getItem("images")) || [];
+    images = images.filter(function(img) {
+      return img !== imageUrl;
+    });
+    localStorage.setItem("images", JSON.stringify(images));
+  }
+});
+
+        </script>
+</head>
+<body>
+    <center>
+    <ul>
+        <a href="planning.html"><li><strong>Planning</strong></li></a>
+        <a href="garden.html"><li><strong>Garden</strong></li></a>
+        <a href="index.html"><li><strong>Home</strong></li></a>
+        <a href="profile.html"><li><strong>Profile</strong></li></a>
+        <a href="mygarden.html"><li><strong>Garden</strong></li></a>
+    </ul>
+    <div>
+        <div>
+            <h1>Welcome to the <strong class="gradient">MyGarden</strong> Home Page<h1>
+        </div>
+        <div>
+            <div class="body profile">
+                <div>
+                    <img src="https://stephenpetersonlawyers.com.au/wp-content/uploads/2024/03/ca520521f7da5fa5adde7038543eea41.jpg" width="60px" style="float: left; margin-left: 26px; margin-top: -3px;" class="image">
+                    <div>
+                        <p class="paragraph-profile-two">Stephen Peterson<br><i style="font-weight: 50; color: rgb(97, 97, 97); font-size: smaller;">Professional Gardener at Peterson & Family Industries</i></p>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="upload-container">
+                        <p style="font-size: x-large; font-family:Arial, Helvetica, sans-serif; padding-bottom: 20px;">Upload On Your <strong class="gradient-two grow">Growing</strong> Garden</p>
+                            <label for="fileInput" id="fileInputLabel">
+                                <div id="fileInputButton"><img src="icons8-plus-94.png" style="display: flex; width: 50px; vertical-align: center;"></div>
+                            </label>
+                            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="body profile">
+                <div id="gallery"></div>
+                <div id="uploadedImageContainer">
+                </div>
+            </div>
+        </div>
+    </div>
+    </center>
+</body>
+</html>
