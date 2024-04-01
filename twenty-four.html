@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .container {
+            display: grid;
+            align-items: center;
+            width: 300px;
+            grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+            gap: 10px;
+        }
+
+        .upload-box {
+            width: 120px;
+            height: 180px;
+            border: 25px solid #7088ac;
+            margin: 18.5px;
+            position: relative;
+            overflow: hidden;
+            align-items: center;
+            background-color: rgb(156, 123, 80);
+        }
+
+        .upload-box img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            width: 50px;
+        }
+
+        .image-container {
+            display: inline;
+            flex-wrap: wrap;
+            gap: 20px;
+
+        }
+
+        .image-container img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: linear-gradient(to right, #ff00cc, #3333ff);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            font-size: 8px;
+            border-radius: 50%;
+            text-transform: uppercase;
+        }
+
+        .body {
+            width: 45em;
+            background-color: white;
+            border-radius: 3.5em;
+            padding-right: 4.2em;
+            padding-left: 4.2em;
+            padding-top: 3.8em;
+            margin: 24px;
+            height: 62em;
+        }
+        
+        .image-pool {
+            margin-left: 350px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <ul>
+        <a href="planning.html"><li><strong>Planning</strong></li></a>
+        <a href="garden.html"><li><strong>Garden</strong></li></a>
+        <a href="index.html"><li><strong>Home</strong></li></a>
+        <a href="profile.html"><li><strong>Profile</strong></li></a>
+        <a href="guide.html"><li><strong>Guide</strong></li></a>
+    </ul>
+    <div>
+        <div>
+            <h1>Hi, This is The <strong class="gradient">'24</strong> Season Page</h1>
+        </div>
+            <div class="body profile">
+                <div>
+                    <p style="text-align: center; font-size: x-large;">Select a Page to Update</p>
+                </div>
+                <br>
+                <div class="center spread">
+                    <a href="summer24.html" class="links-to-folders">Summer</a>
+                    <p style="text-align: center;"><i>Update Your MyGarden Plan</i></p>
+                </div>
+                <div class="center spread">
+                    <br>
+                    <a href="autum24.html" class="links-to-folders">Autum</a>
+                    <p style="text-align: center;"><i>Update Your MyGarden Plan</i></p>
+                </div>
+                <div class="center spread">
+                    <br>
+                    <a href="winter24.html" class="links-to-folders">Winter</a>
+                    <p style="text-align: center;"><i>Update Your MyGarden Plan</i></p>
+                </div>
+                <div class="center spread">
+                    <br>
+                    <a href="spring24.html" class="links-to-folders">Spring</a>
+                    <p style="text-align: center;"><i>Update Your MyGarden Plan</i></p>
+                </div>
+            </div>
+    </div>
+</center>
+</body>
+</html>

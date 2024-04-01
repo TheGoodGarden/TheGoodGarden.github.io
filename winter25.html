@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            overflow: visible;
+        }
+
+        .container {
+            display: grid;
+            align-items: center;
+            width: 300px;
+            grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+            gap: 10px;
+        }
+
+        .upload-box {
+            width: 120px;
+            height: 180px;
+            border: 25px solid #7088ac;
+            margin: 18.5px;
+            position: relative;
+            overflow: hidden;
+            align-items: center;
+            background-color: rgb(156, 123, 80);
+        }
+
+        .upload-box img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            width: 50px;
+        }
+
+        .image-container {
+            display: inline;
+            flex-wrap: wrap;
+            gap: 20px;
+
+        }
+
+        .image-container img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: linear-gradient(to right, #ff00cc, #3333ff);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            font-size: 8px;
+            border-radius: 50%;
+            text-transform: uppercase;
+        }
+
+        .body {
+            width: 45em;
+            background-color: white;
+            border-radius: 3.5em;
+            padding-right: 4.2em;
+            padding-left: 4.2em;
+            padding-top: 3.8em;
+            margin: 24px;
+            height: 62em;
+        }
+        
+        .image-pool {
+            margin-left: 350px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <ul>
+        <a href="planning.html"><li><strong>Planning</strong></li></a>
+        <a href="garden.html"><li><strong>Garden</strong></li></a>
+        <a href="index.html"><li><strong>Home</strong></li></a>
+        <a href="profile.html"><li><strong>Profile</strong></li></a>
+        <a href="guide.html"><li><strong>Guide</strong></li></a>
+    </ul>
+    <div>
+        <div>
+            <h1>Hi, This is the <strong class="gradient">MyGarden</strong> Autum '24 Page</h1>
+        </div>
+        <div class="body profile">
+            <div style="float: left;">
+            <div class="container">
+                <!-- Drop Boxes -->
+                <div class="upload-box" ondrop="drop(event)" ondragover="allowDrop(event)" id="upload-box-1"></div>
+                <div class="upload-box" ondrop="drop(event)" ondragover="allowDrop(event)" id="upload-box-2"></div>
+            </div>
+            <div class="container">
+                <!-- Drop Boxes -->
+                <div class="upload-box" ondrop="drop(event)" ondragover="allowDrop(event)" id="upload-box-1"></div>
+                <div class="upload-box" ondrop="drop(event)" ondragover="allowDrop(event)" id="upload-box-2"></div>
+            </div>
+            <div class="container">
+                <!-- Drop Boxes -->
+                <div class="upload-box" ondrop="drop(event)" ondragover="allowDrop(event)" id="upload-box-1"></div>
+                <div class="upload-box" ondrop="drop(event)" ondragover="allowDrop(event)" id="upload-box-2"></div>
+            </div>
+            <div class="container">
+                <!-- Drop Boxes -->
+                <div class="upload-box" ondrop="drop(event)" ondragover="allowDrop(event)" id="upload-box-1"></div>
+                <div class="upload-box" ondrop="drop(event)" ondragover="allowDrop(event)" id="upload-box-2"></div>
+            </div>
+            </div>
+            <div class="image-pool">
+                <div class="image-container" id="image-container" style="margin-top: 18em;">
+                    <img src="icons8-beans-100.png" draggable="true" ondragstart="drag(event)" width="64px">
+                    <img src="icons8-beetroot-64.png" draggable="true" ondragstart="drag(event)" width="64px">
+                    <img src="icons8-bell-pepper-96.png" draggable="true" ondragstart="drag(event)" width="64px"width="64px">
+                    <img src="icons8-broccoli-96.png" draggable="true" ondragstart="drag(event)" width="64px">
+                    <img src="icons8-cucumber-96.png" draggable="true" ondragstart="drag(event)" width="64px">
+                    <img src="icons8-lettuce-96.png" draggable="true" ondragstart="drag(event)" width="64px">
+                    <img src="icons8-peas-100.png" draggable="true" ondragstart="drag(event)" width="64px">
+                    <img src="icons8-pumpkin-64 (1).png" draggable="true" ondragstart="drag(event)" width="64px">
+                    <img src="icons8-rocket-100.png" draggable="true" ondragstart="drag(event)" width="64px">
+                    <img src="icons8-spinach-96.png" draggable="true" ondragstart="drag(event)" width="64px">
+                    <img src="icons8-tomato-512.png" draggable="true" ondragstart="drag(event)">
+                    <img src="https://via.placeholder.com/100" draggable="true" ondragstart="drag(event)">
+                    <img src="https://via.placeholder.com/100" draggable="true" ondragstart="drag(event)">
+                    <img src="https://via.placeholder.com/100" draggable="true" ondragstart="drag(event)">
+                    <img src="https://via.placeholder.com/100" draggable="true" ondragstart="drag(event)">
+                    <img src="https://via.placeholder.com/100" draggable="true" ondragstart="drag(event)">
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+<script>
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+
+    function drag(event) {
+        event.dataTransfer.setData("text", event.target.src);
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        var draggedImage = document.createElement('img');
+        draggedImage.src = data;
+        event.target.appendChild(draggedImage);
+        addDeleteButton(draggedImage);
+        saveImages(); // Save images to localStorage after drop
+    }
+
+
+    function addDeleteButton(img) {
+        var deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.innerHTML = 'X';
+        deleteBtn.onclick = function() {
+            img.parentNode.removeChild(img);
+            this.parentNode.removeChild(this);
+            saveImages(); // Update localStorage after deletion
+        };
+        img.parentNode.appendChild(deleteBtn);
+    }
+
+    function saveImages() {
+        var uploadBoxes = document.querySelectorAll('.upload-box');
+        var imagesData = [];
+        uploadBoxes.forEach(function(uploadBox) {
+            var img = uploadBox.querySelector('img');
+            if (img) {
+                imagesData.push(img.src);
+            } else {
+                imagesData.push(null); // Push null if no image
+            }
+        });
+        localStorage.setItem('imagesData', JSON.stringify(imagesData));
+    }
+
+    function loadImages() {
+        var imagesData = JSON.parse(localStorage.getItem('imagesData'));
+        if (imagesData) {
+            var uploadBoxes = document.querySelectorAll('.upload-box');
+            imagesData.forEach(function(imageSrc, index) {
+                if (imageSrc) {
+                    var img = new Image();
+                    img.src = imageSrc;
+                    uploadBoxes[index].appendChild(img);
+                    addDeleteButton(img);
+                }
+            });
+        }
+    }
+
+    function removeImageFromPool(src) {
+        var imagePool = document.getElementById('image-container');
+        var images = imagePool.querySelectorAll('img');
+        images.forEach(function(img) {
+            if (img.src === src) {
+                img.parentNode.removeChild(img);
+            }
+        });
+    }
+
+    // Load images when the page is loaded
+    window.addEventListener('load', loadImages); function allowDrop(event) {
+        event.preventDefault();
+    }
+
+    function drag(event) {
+        event.dataTransfer.setData("text", event.target.src);
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        var draggedImage = document.createElement('img');
+        draggedImage.src = data;
+        event.target.appendChild(draggedImage);
+        addDeleteButton(draggedImage);
+        saveImages(); // Save images to sessionStorage after drop
+    }
+
+    function addDeleteButton(img) {
+        var deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.innerHTML = 'X';
+        deleteBtn.onclick = function() {
+            img.parentNode.removeChild(img);
+            this.parentNode.removeChild(this);
+            saveImages(); // Update sessionStorage after deletion
+        };
+        img.parentNode.appendChild(deleteBtn);
+    }
+
+    function saveImages() {
+        var uploadBoxes = document.querySelectorAll('.upload-box');
+        var imagesData = [];
+        uploadBoxes.forEach(function(uploadBox) {
+            var img = uploadBox.querySelector('img');
+            if (img) {
+                imagesData.push(img.src);
+            } else {
+                imagesData.push(null); // Push null if no image
+            }
+        });
+        var pageId = window.location.pathname; // Get the current page URL
+        sessionStorage.setItem(pageId, JSON.stringify(imagesData));
+    }
+
+    function loadImages() {
+        var pageId = window.location.pathname; // Get the current page URL
+        var imagesData = JSON.parse(sessionStorage.getItem(pageId));
+        if (imagesData) {
+            var uploadBoxes = document.querySelectorAll('.upload-box');
+            imagesData.forEach(function(imageSrc, index) {
+                if (imageSrc) {
+                    var img = new Image();
+                    img.src = imageSrc;
+                    uploadBoxes[index].appendChild(img);
+                    addDeleteButton(img);
+                }
+            });
+        }
+    }
+
+    function removeImageFromPool(src) {
+        var imagePool = document.getElementById('image-container');
+        var images = imagePool.querySelectorAll('img');
+        images.forEach(function(img) {
+            if (img.src === src) {
+                img.parentNode.removeChild(img);
+            }
+        });
+    }
+
+    // Load images when the page is loaded
+    window.addEventListener('load', loadImages);
+</script>
+</body>
+</html>

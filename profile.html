@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            overflow: visible;
+        }
+
+        .body {
+            height: 28em;
+        }
+
+        button {
+            width: 75px;
+            margin-right: 20px;
+            margin-left: 20px;
+            transition: 0.25s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+    <script>
+        function enableEdit() {
+            document.getElementById("myTextBox").readOnly = false;
+        }
+
+        function saveText() {
+            var text = document.getElementById("myTextBox").value;
+            localStorage.setItem("savedText", text);
+            document.getElementById("myTextBox").readOnly = true;
+            alert("Bio saved successfully!");
+        }
+
+        // Load saved text when the page loads
+        window.onload = function() {
+            var savedText = localStorage.getItem("savedText");
+            if (savedText !== null) {
+                document.getElementById("myTextBox").value = savedText;
+            }
+            // Make the text box readonly initially
+            document.getElementById("myTextBox").readOnly = true;
+        };
+    </script>
+    <title>My Profile</title>
+</head>
+<body>
+    <center>
+        <ul>
+            <a href="planning.html"><li><strong>Planning</strong></li></a>
+            <a href="garden.html"><li><strong>Garden</strong></li></a>
+            <a href="index.html"><li><strong>Home</strong></li></a>
+            <a href="profile.html"><li><strong>Profile</strong></li></a>
+            <a href="guide.html"><li><strong>Guide</strong></li></a>
+        </ul>
+        <div>
+            <div>
+                <h1>Hi, This is the <strong class="gradient">Profile</strong> Page<h1>
+            </div>
+            <div>
+                <div class="body profile">
+                    <div style="display: flex;">
+                        <label for="profilePictureInput">
+                            <img id="profilePicture" src="" width="80px" height="80px" style="float: left; margin-left: 26px; margin-top: 8px;" class="image">
+                        </label>
+                        <input type="file" id="profilePictureInput" style="display: none;" onchange="changeProfilePicture()" accept="image/*">
+                    </div>
+                        <div style="display: flex; margin-left: 56px;">
+                            <p class="paragraph-profile">Stephen Peterson</p>
+                        </div>
+                    <div>
+                        <textarea id="myTextBox" rows="2" cols="70" style="margin: 30px"></textarea>
+                        <button onclick="enableEdit()">Edit</button>
+                        <button onclick="saveText()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+    <script>
+        // Remaining JavaScript remains the same
+        function changeProfilePicture() {
+            var fileInput = document.getElementById("profilePictureInput");
+            var file = fileInput.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = document.getElementById("profilePicture");
+                    img.src = e.target.result;
+                    // Save the new profile picture to localStorage
+                    localStorage.setItem("profilePicture", e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Load saved text and profile picture when the page loads
+        window.onload = function() {
+            var savedText = localStorage.getItem("savedText");
+            if (savedText !== null) {
+                document.getElementById("myTextBox").value = savedText;
+            }
+
+            // Load profile picture if available in localStorage or use default
+            var savedProfilePicture = localStorage.getItem("profilePicture");
+            if (savedProfilePicture !== null) {
+                document.getElementById("profilePicture").src = savedProfilePicture;
+            }
+
+            // Add click event listener to profile picture holder
+            document.getElementById("profilePicture").addEventListener("click", function() {
+                document.getElementById("profilePictureInput").click();
+            });
+        };
+    </script>
+</body>
+</html>
