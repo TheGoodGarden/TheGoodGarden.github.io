@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>2024</title>
+        <link rel="icon" type="image/x-icon" href="icons8-flower-doodle-96.png">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <style>
+        body {
+            overflow: visible;
+        }
+        .body {
+            width: 45em;
+            background-color: white;
+            border-radius: 3.5em;
+            padding-right: 4.2em;
+            padding-left: 4.2em;
+            padding-top: 3.8em;
+            margin: 24px;
+            height: 30em;
+            box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <body>
+    <center>
+        <ul>
+            <a href="planning.html"><li><strong>Planning</strong></li></a>
+            <a href="garden.html"><li><strong>Garden</strong></li></a>
+            <a href="index.html"><li><strong>Home</strong></li></a>
+            <a href="profile.html"><li><strong>Profile</strong></li></a>
+            <a href="guide.html"><li><strong>Guide</strong></li></a>
+        </ul>
+        <div>
+            <div>
+                <h1>This is the <strong class="gradient">2024</strong> MyGarden Page<h1>
+            </div>
+            <div class="body profile">
+                <div>
+                    <p style="text-align: center; font-size: x-large;">Record Each Seasons Produce Rating</p>
+                </div>
+                <div>
+                    <br>
+                    <h3>Summer</h3>
+                    <label for="rating">Select your rating:</label>
+                    <select id="rating" style="margin: 10px;">
+                        <option value="-None-">-None-</option>
+                        <option value="bad" style="color: red;">Bad</option>
+                        <option value="okay" style="color: rgb(255, 81, 0);">Okay</option>
+                        <option value="good" style="color: orange;">Good</option>
+                        <option value="excellent" style="color: rgb(166, 255, 0);">Excellent</option>
+                        <option value="fantastic" style="color: rgb(0, 233, 19);">Fantastic</option>
+                    </select>
+                    <br>
+                    <h3>Autum</h3>
+                    <label for="rating">Select your rating:</label>
+                    <select id="rating" style="margin: 10px;">
+                        <option value="-None-">-None-</option>
+                        <option value="bad" style="color: red;">Bad</option>
+                        <option value="okay" style="color: rgb(255, 81, 0);">Okay</option>
+                        <option value="good" style="color: orange;">Good</option>
+                        <option value="excellent" style="color: rgb(166, 255, 0);">Excellent</option>
+                        <option value="fantastic" style="color: rgb(9, 255, 0);">Fantastic</option>
+                    </select>
+                    <br>
+                    <h3>Winter</h3>
+                    <label for="rating">Select your rating:</label>
+                    <select id="rating" style="margin: 10px;">
+                        <option value="-None-">-None-</option>
+                        <option value="okay" style="color: rgb(255, 81, 0);">Okay</option>
+                        <option value="good" style="color: orange;">Good</option>
+                        <option value="excellent" style="color: rgb(166, 255, 0);">Excellent</option>
+                        <option value="fantastic" style="color: rgb(9, 255, 0);">Fantastic</option>
+                    </select>
+                    <br>
+                    <h3>Spring</h3>
+                    <label for="rating">Select your rating:</label>
+                    <select id="rating" style="margin: 10px;">
+                        <option value="-None-">-None-</option>
+                        <option value="okay" style="color: rgb(255, 81, 0);">Okay</option>
+                        <option value="good" style="color: orange;">Good</option>
+                        <option value="excellent" style="color: rgb(166, 255, 0);">Excellent</option>
+                        <option value="fantastic" style="color: rgb(9, 255, 0);">Fantastic</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </center>
+<script>
+// Get the select element
+const ratingSelect = document.getElementById('rating');
+
+// Load saved rating when the page loads
+window.onload = function() {
+  const savedRating = localStorage.getItem('selectedRating');
+  if (savedRating) {
+    ratingSelect.value = savedRating;
+  }
+};
+
+// Save selected rating when it changes
+ratingSelect.addEventListener('change', function() {
+  const selectedRating = ratingSelect.value;
+  localStorage.setItem('selectedRating', selectedRating);
+});
+</script>
+    </body>
+</html>
